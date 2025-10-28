@@ -10,8 +10,6 @@
 import UIKit
 
 class ArticlesViewController: UIViewController {
-
-    
     private let tableView = UITableView()
     private let viewModel = ArticlesViewModel()
     private var refreshControl = UIRefreshControl()
