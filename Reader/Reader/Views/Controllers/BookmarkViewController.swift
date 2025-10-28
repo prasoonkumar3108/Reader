@@ -10,82 +10,6 @@
 import UIKit
 import SafariServices
 
-//class BookmarkViewController: UIViewController {
-//
-//    private let tableView = UITableView()
-//    private let viewModel = ArticlesViewModel()
-//
-//    private var bookmarks: [CDArticle] = []
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        title = "Bookmarks"
-//        view.backgroundColor = .systemBackground
-//        setupTable()
-//    }
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        reloadBookmarks()
-//    }
-//
-//    private func setupTable() {
-//        tableView.register(ArticleCell.self, forCellReuseIdentifier: ArticleCell.reuseId)
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-//        tableView.tableFooterView = UIView()
-//        view.addSubview(tableView)
-//        tableView.dataSource = self
-//        tableView.delegate = self
-//
-//        NSLayoutConstraint.activate([
-//            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//        ])
-//    }
-//
-//    private func reloadBookmarks() {
-//        bookmarks = viewModel.loadBookmarks()
-//        tableView.reloadData()
-//    }
-//}
-//
-//extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//         bookmarks.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let cd = bookmarks[indexPath.row]
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.reuseId, for: indexPath) as? ArticleCell else {
-//            return UITableViewCell()
-//        }
-//        cell.configure(with: cd)
-//        cell.onBookmarkTapped = { [weak self] in
-//            guard let self = self else { return }
-//            ArticlesRepository().toggleBookmark(for: cd)
-//            self.reloadBookmarks()
-//        }
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        let cd = bookmarks[indexPath.row]
-//        if let urlStr = cd.url, let url = URL(string: urlStr) {
-//            let svc = SFSafariViewController(url: url)
-//            present(svc, animated: true)
-//        } else {
-//            let alert = UIAlertController(title: cd.title, message: cd.content, preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: .default))
-//            present(alert, animated: true)
-//        }
-//    }
-//}
-
-
 final class BookmarkViewController: UIViewController {
 
     private let tableView = UITableView()
@@ -143,19 +67,6 @@ extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
         bookmarks.count
     }
 
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.reuseId, for: indexPath) as? ArticleCell else {
-//            return UITableViewCell()
-//        }
-//        let article = bookmarks[indexPath.row]
-//        cell.configure(with: article)
-//        cell.onBookmarkTapped = { [weak self] in
-//            guard let self = self else { return }
-//            self.repository.toggleBookmark(for: article)
-//            self.loadBookmarks()
-//        }
-//        return cell
-//    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.reuseId, for: indexPath) as? ArticleCell else {
             return UITableViewCell()
