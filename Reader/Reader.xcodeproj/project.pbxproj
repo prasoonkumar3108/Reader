@@ -32,6 +32,7 @@
 		C17FA9C42EAF8F89009F793E /* MainTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C17FA9C22EAF8F89009F793E /* MainTabBarController.xib */; };
 		C17FA9C62EAF901C009F793E /* CDArticle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17FA9C52EAF901C009F793E /* CDArticle+CoreDataClass.swift */; };
 		C17FA9C82EAF9042009F793E /* CDArticle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17FA9C72EAF9042009F793E /* CDArticle+CoreDataProperties.swift */; };
+		C1D2D9BA2EB16792007812A1 /* NewsAPIResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D2D9B92EB16792007812A1 /* NewsAPIResponseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		C17FA9C22EAF8F89009F793E /* MainTabBarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTabBarController.xib; sourceTree = "<group>"; };
 		C17FA9C52EAF901C009F793E /* CDArticle+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDArticle+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C17FA9C72EAF9042009F793E /* CDArticle+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDArticle+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C1D2D9B92EB16792007812A1 /* NewsAPIResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIResponseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				C17FA9922EAF8D50009F793E /* ReaderTests.swift */,
+				C1D2D9B92EB16792007812A1 /* NewsAPIResponseTests.swift */,
 			);
 			path = ReaderTests;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1D2D9BA2EB16792007812A1 /* NewsAPIResponseTests.swift in Sources */,
 				C17FA9932EAF8D50009F793E /* ReaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
