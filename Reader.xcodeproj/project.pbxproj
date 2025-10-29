@@ -227,7 +227,6 @@
 		C17FA9CD2EAFECBC009F793E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C17FA9D02EAFED3C009F793E /* Helpers */,
 				C17FA9CF2EAFED0D009F793E /* Controllers */,
 				C17FA9CE2EAFECE7009F793E /* Cells */,
 			);
@@ -254,14 +253,6 @@
 				C17FA9C22EAF8F89009F793E /* MainTabBarController.xib */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		C17FA9D02EAFED3C009F793E /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				C17FA9B32EAF8ED5009F793E /* ImageLoader.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		C17FA9D12EAFED79009F793E /* CoreData */ = {
@@ -297,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				C1D2D9D12EB22D42007812A1 /* ConfigureAppearance.swift */,
+				C17FA9B32EAF8ED5009F793E /* ImageLoader.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
