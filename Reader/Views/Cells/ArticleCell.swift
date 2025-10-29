@@ -2,139 +2,21 @@
 //  ArticleCell.swift
 //  Reader
 //
-//  Created by Prasoon Tiwari on 27/10/25.
+//  Created by Prasoon Tiwari on 29/10/25.
 //
-
 
 import UIKit
 
-//class ArticleCell: UITableViewCell {
-//    static let reuseId = "ArticleCell"
-//
-//    private let thumbImageView: UIImageView = {
-//        let iv = UIImageView()
-//        iv.contentMode = .scaleAspectFill
-//        iv.clipsToBounds = true
-//        iv.layer.cornerRadius = 8
-//        iv.translatesAutoresizingMaskIntoConstraints = false
-//        iv.widthAnchor.constraint(equalToConstant: 90).isActive = true
-//        iv.heightAnchor.constraint(equalToConstant: 70).isActive = true
-//        return iv
-//    }()
-//
-//    private let titleLabel: UILabel = {
-//        let l = UILabel()
-//        l.numberOfLines = 2
-//        l.font = .preferredFont(forTextStyle: .headline)
-//        l.translatesAutoresizingMaskIntoConstraints = false
-//        return l
-//    }()
-//
-//    private let authorLabel: UILabel = {
-//        let l = UILabel()
-//        l.numberOfLines = 1
-//        l.font = .preferredFont(forTextStyle: .subheadline)
-//        l.textColor = .secondaryLabel
-//        l.translatesAutoresizingMaskIntoConstraints = false
-//        return l
-//    }()
-//
-//    private let bookmarkButton: UIButton = {
-//        let btn = UIButton(type: .system)
-//        btn.setTitle("Bookmark", for: .normal)
-//        btn.translatesAutoresizingMaskIntoConstraints = false
-//        return btn
-//    }()
-//
-//    var onBookmarkTapped: (() -> Void)?
-//
-//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-//        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        setup()
-//    }
-//
-//    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-//
-//    private func setup() {
-//        accessoryType = .none
-//        let stack = UIStackView(arrangedSubviews: [titleLabel, authorLabel, UIView()])
-//        stack.axis = .vertical
-//        stack.spacing = 6
-//        stack.translatesAutoresizingMaskIntoConstraints = false
-//
-//        contentView.addSubview(thumbImageView)
-//        contentView.addSubview(stack)
-//        contentView.addSubview(bookmarkButton)
-//
-//        NSLayoutConstraint.activate([
-//            thumbImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-//            thumbImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-//
-//            stack.leadingAnchor.constraint(equalTo: thumbImageView.trailingAnchor, constant: 12),
-//            stack.trailingAnchor.constraint(equalTo: bookmarkButton.leadingAnchor, constant: -8),
-//            stack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-//            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-//
-//            bookmarkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-//            bookmarkButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-//        ])
-//
-//        bookmarkButton.addTarget(self, action: #selector(bookmarkTapped), for: .touchUpInside)
-//    }
-//
-//    @objc private func bookmarkTapped() {
-//        onBookmarkTapped?()
-//    }
-//
-//    func configure(with cdArticle: CDArticle) {
-//        titleLabel.text = cdArticle.title
-//        authorLabel.text = cdArticle.author ?? "Unknown"
-//        let title = cdArticle.isBookmarked ? "Bookmarked" : "Bookmark"
-//        bookmarkButton.setTitle(title, for: .normal)
-//        ImageLoader.shared.loadImage(from: cdArticle.urlToImage) { [weak self] img in
-//            self?.thumbImageView.image = img
-//        }
-//    }
-//}
-
-
 class ArticleCell: UITableViewCell {
     static let reuseId = "ArticleCell"
-
-    private let thumbImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
-        iv.clipsToBounds = true
-        iv.layer.cornerRadius = 8
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.widthAnchor.constraint(equalToConstant: 90).isActive = true
-        iv.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        return iv
-    }()
-
-    private let titleLabel: UILabel = {
-        let l = UILabel()
-        l.numberOfLines = 2
-        l.font = .preferredFont(forTextStyle: .headline)
-        l.translatesAutoresizingMaskIntoConstraints = false
-        return l
-    }()
-
-    private let authorLabel: UILabel = {
-        let l = UILabel()
-        l.numberOfLines = 1
-        l.font = .preferredFont(forTextStyle: .subheadline)
-        l.textColor = .secondaryLabel
-        l.translatesAutoresizingMaskIntoConstraints = false
-        return l
-    }()
-
-    private let bookmarkButton: UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setTitle("Bookmark", for: .normal)
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        return btn
-    }()
+    
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var imageContainerView: UIView!
+    @IBOutlet weak var widthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var thumbImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var bookmarkButton: UIButton!
 
     var onBookmarkTapped: (() -> Void)?
     var showBookmarkButton: Bool = true {
@@ -143,50 +25,48 @@ class ArticleCell: UITableViewCell {
         }
     }
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override func awakeFromNib() {
+        super.awakeFromNib()
         setup()
     }
-
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-
+        
     private func setup() {
-        accessoryType = .none
-        let stack = UIStackView(arrangedSubviews: [titleLabel, authorLabel, UIView()])
-        stack.axis = .vertical
-        stack.spacing = 6
-        stack.translatesAutoresizingMaskIntoConstraints = false
-
-        contentView.addSubview(thumbImageView)
-        contentView.addSubview(stack)
-        contentView.addSubview(bookmarkButton)
-
-        NSLayoutConstraint.activate([
-            thumbImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            thumbImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-
-            stack.leadingAnchor.constraint(equalTo: thumbImageView.trailingAnchor, constant: 12),
-            stack.trailingAnchor.constraint(equalTo: bookmarkButton.leadingAnchor, constant: -8),
-            stack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-
-            bookmarkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            bookmarkButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-        ])
-
-        bookmarkButton.addTarget(self, action: #selector(bookmarkTapped), for: .touchUpInside)
+        
+        contentView.backgroundColor = .secondaryBackground
+        backgroundColor = .clear
+        imageContainerView.backgroundColor = .clear
+        containerView.backgroundColor = .background
+        titleLabel?.textColor = .textPrimary
+        authorLabel?.textColor = .secondary
+        thumbImageView?.tintColor = .primary
+        
+        bookmarkButton?.tintColor = .textPrimary
+        bookmarkButton?.backgroundColor = .secondary
+        
+        // Apply corner radius to image view
+        thumbImageView.layer.cornerRadius = 10
+        thumbImageView.clipsToBounds = true
+        
+        // Apply corner radius to container view
+        containerView.layer.cornerRadius = 10
+        containerView.clipsToBounds = true
+        
+        // Apply corner radius to bookmark button
+        bookmarkButton.layer.cornerRadius = 15.0
+        bookmarkButton.clipsToBounds = true
     }
-
-    @objc private func bookmarkTapped() {
+    
+    @IBAction func bookmarkTapped(_ sender: UIButton) {
         onBookmarkTapped?()
     }
-
     func configure(with cdArticle: CDArticle) {
         titleLabel.text = cdArticle.title
         authorLabel.text = cdArticle.author ?? "Unknown"
         bookmarkButton.setTitle(cdArticle.isBookmarked ? "Bookmarked" : "Bookmark", for: .normal)
         ImageLoader.shared.loadImage(from: cdArticle.urlToImage) { [weak self] img in
+            self?.thumbImageView.tintColor = UIColor(named: "Color/Primary")
             self?.thumbImageView.image = img
+            
         }
     }
 }

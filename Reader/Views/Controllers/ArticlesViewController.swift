@@ -11,7 +11,8 @@ import UIKit
 
 class ArticlesViewController: UIViewController {
     
-    private let tableView = UITableView()
+    @IBOutlet weak var tableView: UITableView!
+    
     private let viewModel = ArticlesViewModel()
     private var refreshControl = UIRefreshControl()
 
@@ -24,26 +25,15 @@ class ArticlesViewController: UIViewController {
         bindViewModel()
         viewModel.loadArticles()
     }
+    
+    
 
     private func setupTable() {
-        tableView.register(ArticleCell.self, forCellReuseIdentifier: ArticleCell.reuseId)
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.tableFooterView = UIView()
-        view.addSubview(tableView)
-        tableView.dataSource = self
-        tableView.delegate = self
-
+        let nib = UINib(nibName: "ArticleCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: ArticleCell.reuseId)
         refreshControl.addTarget(self, action: #selector(onPullToRefresh), for: .valueChanged)
         tableView.refreshControl = refreshControl
 
-        NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
     }
 
     private func setupSearch() {
@@ -80,6 +70,8 @@ extension ArticlesViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.reuseId, for: indexPath) as? ArticleCell else {
             return UITableViewCell()
         }
+        cell.widthConstraint.constant = 120.0
+        cell.showBookmarkButton = true
         cell.configure(with: cd)
         cell.onBookmarkTapped = { [weak self] in
             self?.viewModel.toggleBookmark(at: indexPath.row)

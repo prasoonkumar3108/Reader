@@ -11,17 +11,16 @@ import UIKit
 import SafariServices
 
 final class BookmarkViewController: UIViewController {
-
-    private let tableView = UITableView()
+    @IBOutlet weak var tableView: UITableView!
     private let repository = ArticlesRepository()
     private var bookmarks: [CDArticle] = []
-    private let refreshControl = UIRefreshControl()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Bookmarks"
         view.backgroundColor = .systemBackground
-        setupTableView()
+        setupTable()
         loadBookmarks()
     }
 
@@ -30,25 +29,9 @@ final class BookmarkViewController: UIViewController {
         loadBookmarks() // always re-fetch fresh list from Core Data
     }
 
-    private func setupTableView() {
-        tableView.register(ArticleCell.self, forCellReuseIdentifier: ArticleCell.reuseId)
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-
-        view.addSubview(tableView)
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-
-        // Pull to refresh
-        refreshControl.addTarget(self, action: #selector(refreshBookmarks), for: .valueChanged)
-        tableView.refreshControl = refreshControl
+    private func setupTable() {
+        let nib = UINib(nibName: "ArticleCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: ArticleCell.reuseId)
     }
 
     private func loadBookmarks() {
@@ -56,10 +39,6 @@ final class BookmarkViewController: UIViewController {
         tableView.reloadData()
     }
 
-    @objc private func refreshBookmarks() {
-        loadBookmarks()
-        refreshControl.endRefreshing()
-    }
 }
 
 extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
@@ -74,6 +53,7 @@ extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
         let article = bookmarks[indexPath.row]
         cell.configure(with: article)
         cell.showBookmarkButton = false  //Hide button in bookmark tab
+        cell.widthConstraint.constant = 0.0
         return cell
     }
     

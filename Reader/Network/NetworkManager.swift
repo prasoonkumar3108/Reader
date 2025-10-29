@@ -20,7 +20,7 @@ class NetworkManager {
     private let topHeadlinesURLString = "https://newsapi.org/v2/top-headlines?country=us&pageSize=50"
 
     func fetchTopHeadlines(completion: @escaping (Result<[ArticleDTO], Error>) -> Void) {
-        guard !apiKey.isEmpty, apiKey != "PASTE_YOUR_NEWSAPI_KEY_HERE" else {
+        guard !apiKey.isEmpty, apiKey != "API_KEY" else {
             completion(.failure(NSError(domain: "NetworkManager", code: 401, userInfo: [NSLocalizedDescriptionKey: "Missing NewsAPI API key. Paste it in NetworkManager.apiKey"])))
             return
         }
