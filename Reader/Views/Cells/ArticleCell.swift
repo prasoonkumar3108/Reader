@@ -38,10 +38,10 @@ class ArticleCell: UITableViewCell {
         
     private func setup() {
         
-        contentView.backgroundColor = .secondaryBackground
+        contentView.backgroundColor = .background
         backgroundColor = .clear
         imageContainerView.backgroundColor = .clear
-        containerView.backgroundColor = .background
+        containerView.backgroundColor = .secondaryBackground
         titleLabel?.textColor = .textPrimary
         authorLabel?.textColor = .secondary
         thumbImageView?.tintColor = .primary
