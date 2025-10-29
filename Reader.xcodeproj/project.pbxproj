@@ -156,10 +156,12 @@
 				C17FA9D32EAFEDE8009F793E /* Resources */,
 				C17FA9892EAF8D50009F793E /* Info.plist */,
 				C17FA9812EAF8D4C009F793E /* ReaderModel.xcdatamodeld */,
-				C17FA9C92EAFEC37009F793E /* Models */,
 				C17FA9D12EAFED79009F793E /* CoreData */,
+				C1D2D9D52EB24705007812A1 /* Utilities */,
 				C17FA9CB2EAFEC81009F793E /* Repository */,
 				C17FA9CA2EAFEC5E009F793E /* Network */,
+				C1D2D9D62EB2471F007812A1 /* Extensions */,
+				C17FA9C92EAFEC37009F793E /* Models */,
 				C17FA9CD2EAFECBC009F793E /* Views */,
 				C17FA9CC2EAFEC94009F793E /* ViewModels */,
 			);
@@ -287,10 +289,24 @@
 				C17FA9862EAF8D50009F793E /* LaunchScreen.storyboard */,
 				C17FA97E2EAF8D4C009F793E /* Main.storyboard */,
 				C17FA9842EAF8D50009F793E /* Assets.xcassets */,
-				C1D2D9CF2EB22CDA007812A1 /* UIColor+AppColors.swift */,
-				C1D2D9D12EB22D42007812A1 /* ConfigureAppearance.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C1D2D9D52EB24705007812A1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C1D2D9D12EB22D42007812A1 /* ConfigureAppearance.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C1D2D9D62EB2471F007812A1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C1D2D9CF2EB22CDA007812A1 /* UIColor+AppColors.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
