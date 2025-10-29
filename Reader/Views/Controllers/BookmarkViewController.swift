@@ -30,6 +30,8 @@ final class BookmarkViewController: UIViewController {
     }
 
     private func setupTable() {
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
         let nib = UINib(nibName: "ArticleCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: ArticleCell.reuseId)
     }
@@ -54,6 +56,7 @@ extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(with: article)
         cell.showBookmarkButton = false  //Hide button in bookmark tab
         cell.widthConstraint.constant = 0.0
+        cell.layoutIfNeeded()
         return cell
     }
     

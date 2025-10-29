@@ -29,6 +29,12 @@ class ArticleCell: UITableViewCell {
         super.awakeFromNib()
         setup()
     }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // Force labels to calculate proper width before rendering
+        titleLabel.preferredMaxLayoutWidth = titleLabel.frame.width
+        authorLabel.preferredMaxLayoutWidth = authorLabel.frame.width
+    }
         
     private func setup() {
         

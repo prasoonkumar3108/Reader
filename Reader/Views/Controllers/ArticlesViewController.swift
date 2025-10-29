@@ -29,6 +29,8 @@ class ArticlesViewController: UIViewController {
     
 
     private func setupTable() {
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
         let nib = UINib(nibName: "ArticleCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: ArticleCell.reuseId)
         refreshControl.addTarget(self, action: #selector(onPullToRefresh), for: .valueChanged)
@@ -76,6 +78,7 @@ extension ArticlesViewController: UITableViewDataSource, UITableViewDelegate {
         cell.onBookmarkTapped = { [weak self] in
             self?.viewModel.toggleBookmark(at: indexPath.row)
         }
+        cell.layoutIfNeeded()
         return cell
     }
 
